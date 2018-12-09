@@ -2,10 +2,10 @@
 console.log("Hello");
 
 workbox.routing.registerRoute(
-   /https:\/\/cat-fact\.herokuapp\.com\/facts/,
+  /http\:\/\/localhost\:4000\/graphql/,
   workbox.strategies.networkFirst()
 )
 
-//workbox.skipWaiting();
+workbox.skipWaiting();
 
 workbox.precaching.precacheAndRoute(self.__precacheManifest);

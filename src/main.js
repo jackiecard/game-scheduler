@@ -1,15 +1,36 @@
-fetch("https://cat-fact.herokuapp.com/facts")
-  .then(res => res.json())
+
+var query = `
+query getFacts {
+  facts{
+  	text,
+    rating
+	}
+}`;
+
+fetch('http://localhost:4000/graphql', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    'Accept': 'application/json'
+  },
+  body: JSON.stringify({
+    query
+  })
+})
+  .then(r => r.json())
   .then(data => {
-    const facts = document.querySelector("#facts");
+    const factsElement = document.querySelector("#facts");
+    const facts = data.data.facts;
     let html = '';
-    data.all.forEach(fact => {
+    
+    facts.forEach(fact => {
       html += `
         <div class="card">${fact.text}</div>
       `
     });
-    facts.innerHTML = html
+
+    factsElement.innerHTML = html
   })
-  .catch(function(error) {
+  .catch(function (error) {
     console.log("Request failed", error);
   });
