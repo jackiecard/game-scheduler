@@ -1,10 +1,14 @@
 
 var query = `
-query getFacts {
-  facts{
-  	text,
-    rating
-	}
+query getGame {
+  game(id: 1) {
+    name,
+    date,
+    attendees {
+      id,
+      name
+    }
+  }
 }`;
 
 fetch('http://localhost:4000/graphql', {
@@ -19,17 +23,17 @@ fetch('http://localhost:4000/graphql', {
 })
   .then(r => r.json())
   .then(data => {
-    const factsElement = document.querySelector("#facts");
-    const facts = data.data.facts;
-    let html = '';
+    const userList = document.querySelector("#user-list");
+    const game = data.data.game;
+    let html = `<h1>${game.name} - ${game.date}</h1>`;
     
-    facts.forEach(fact => {
+    game.attendees.forEach(user => {
       html += `
-        <div class="card">${fact.text}</div>
+        <div class="card">${user.name}</div>
       `
     });
 
-    factsElement.innerHTML = html
+    userList.innerHTML = html
   })
   .catch(function (error) {
     console.log("Request failed", error);

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Cat Facts</title>
+  <title>Game Scheduler</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="main.css" />
   <style>
@@ -24,25 +24,35 @@
       padding: 15px 10px;
     }
 
-    #facts{
+    #user-list{
       padding: 10px 0;
+    }
+
+    .wrapper{
+      position: absolute;
+      height: calc(100% - 50px);
+      width: 100%;
+      overflow: auto;
+      top: 0;
       margin-top: 50px;
       background-color: #e6e6e6;
-      overflow: auto;
+      padding: 15px;
     }
 
     .card{
       background-color: #fff;
       padding: 15px;
-      margin: 15px;
+      margin: 15px 0;
       box-shadow: 0px 0px 5px #00000047;
       border-radius: 3px;
     }
   </style>
 </head>
 <body>
-  <header>Cat facts PWA</header>
-  <div id="facts"></div>
+  <header>Game Scheduler</header>
+  <section class="wrapper">
+    <div id="user-list"></div>
+  </section>
 
   <script src="main.js"></script>
   <script>

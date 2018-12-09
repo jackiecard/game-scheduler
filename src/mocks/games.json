@@ -1,0 +1,25 @@
+[
+  {
+    "id": 1,
+    "name": "FutSec 1",
+    "date": "10/12/2018",
+    "attendees": [
+      {
+        "id": 1,
+        "name": "Pedro Lenzi"
+      },
+      {
+        "id": 3,
+        "name": "Miriam"
+      },
+      {
+        "id": 4,
+        "name": "Fernanda"
+      },
+      {
+        "id": 5,
+        "name": "Marieli"
+      }
+    ]
+  }
+]

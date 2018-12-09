@@ -1,12 +1,8 @@
-const express = require('express');
-const expressGraphQL = require('express-graphql');
-
-import data from './src/data/data.js';
-
-let root = {
-    fact: data.getFact,
-    facts: data.getFacts
-};
+import express from 'express';
+import expressGraphQL from 'express-graphql';
+import connect from 'connect';
+import serveStatic from 'serve-static';
+import gameScheduler from './src/schema/gameScheduler.js';
 
 let app = express();
 
@@ -22,9 +18,11 @@ app.use('/graphql', (req, res, next) => {
         next();
     }
 }, expressGraphQL({
-        schema: data.schema,
-    rootValue: root,
+    schema: gameScheduler.schema,
+    rootValue: gameScheduler.root,
     graphiql: true,
 }));
 
 app.listen(4000, () => console.log('Express GraphQL Server Now Running On localhost:4000/graphql'));
+
+connect().use(serveStatic(`${__dirname}/dist`)).listen(8080, () => console.log('Server running on 8080...'));
